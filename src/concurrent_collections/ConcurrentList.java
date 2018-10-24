@@ -42,7 +42,7 @@ class MyThread implements Runnable {
 			ConcurrentList.al.add(12);
 			Thread.currentThread().sleep(2000);
 		} catch (InterruptedException e) {
-			System.out.println("child thread");
+			System.out.println("child catch thread");
 				ConcurrentList.al.add(12);
 			// TODO Auto-generated catch block
 			e.printStackTrace();

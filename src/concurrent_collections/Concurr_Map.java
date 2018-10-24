@@ -10,9 +10,9 @@ public class Concurr_Map {
 		ConcurrentHashMap<Integer, String> chm = new ConcurrentHashMap<>();
 		chm.putIfAbsent(1, "abc");
 		chm.putIfAbsent(2, "abc");
-		chm.remove(1, "def");
+		chm.replace(1, "def","zzz");
 		System.out.println("1 chm "+chm);
-		chm.remove(1, "abc");
+		chm.replace(1, "abc","zzz");
 		System.out.println("2 chm "+chm);
 	}
 

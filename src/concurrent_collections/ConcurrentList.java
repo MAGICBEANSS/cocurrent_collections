@@ -32,7 +32,7 @@ t2.start();
 
 }
 
-class MyThread implements Runnable {
+class MyThread1 implements Runnable {
 
 	@Override
 	public void run() {

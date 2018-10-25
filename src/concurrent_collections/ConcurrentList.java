@@ -12,8 +12,17 @@ public class ConcurrentList {
 		// TODO Auto-generated method stub
 		ConcurrentList.al.add(1);
 		ConcurrentList.al.add(2);
-		ConcurrentList.al.add(3);
-		ConcurrentList.al.add(4);
+		ConcurrentList.al.addIfAbsent(3);
+
+		boolean add4 = ConcurrentList.al.addIfAbsent(4);
+		if(add4)  {
+			System.out.println("adding 4 in main thread returns true as not there in arraylist "+add4);
+		}
+		else
+		{
+			System.out.println("adding 4 in main thread returns false as already there in arraylist "+add4);
+		}
+		ConcurrentList.al.addIfAbsent(3);
 		ConcurrentList.al.add(5);
 		Iterator<Integer> it =  al.iterator();
 MyThread1 mt = new MyThread1();
@@ -22,7 +31,7 @@ t2.start();
 		while(it.hasNext())
 		{
 			Integer z = it.next();
-			it.remove();
+			
 			System.out.println("z "+z);
 			Thread.currentThread().sleep(3000);
 			
@@ -41,7 +50,14 @@ class MyThread1 implements Runnable {
 		// TODO Auto-generated method stub
 		try {
 			System.out.println("child thread");
-			ConcurrentList.al.add(12);
+		boolean add4 = 	ConcurrentList.al.addIfAbsent(4);
+		if(add4)  {
+			System.out.println("adding 4 returns true as not there in arraylist "+add4);
+		}
+		else
+		{
+			System.out.println("adding 4 returns false as already there in arraylist "+add4);
+		}
 			Thread.currentThread().sleep(2000);
 		} catch (InterruptedException e) {
 			System.out.println("child catch thread");

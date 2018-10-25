@@ -3,9 +3,10 @@ package concurrent_collections;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConcurrentList {
-	static ArrayList<Integer> al = new ArrayList<>();
+	static CopyOnWriteArrayList<Integer> al = new CopyOnWriteArrayList<>();
 	
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
@@ -15,12 +16,13 @@ public class ConcurrentList {
 		ConcurrentList.al.add(4);
 		ConcurrentList.al.add(5);
 		Iterator<Integer> it =  al.iterator();
-MyThread mt = new MyThread();
+MyThread1 mt = new MyThread1();
 Thread t2 = new Thread(mt);
 t2.start();
 		while(it.hasNext())
 		{
 			Integer z = it.next();
+			it.remove();
 			System.out.println("z "+z);
 			Thread.currentThread().sleep(3000);
 			
